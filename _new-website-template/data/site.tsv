@@ -4,8 +4,10 @@ byline	A DAWN Site
 year	2019
 
 |labels and messages
-iconName	AW Home
+iconName	AmadeusWeb.in
 siteMenuName	AW Home
+description	[describe the website]
+notes	notes/status
 welcome-message	This is a DAWN Site
 footer-message	DAWN
 
@@ -16,5 +18,5 @@ mediakit	?palette=default
 
 |technical
 sections	
-local-url	http://localhost/joyfulearth/
-live-url	https://joyfulearth.org/
+local-url	http://localhost/amadeusweb/www/
+live-url	https://amadeusweb.in/

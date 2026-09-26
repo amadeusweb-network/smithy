@@ -25,7 +25,20 @@ Meta Author: `GitHub Copilot`
 
 ```
 <!--//meta
+Description: 
 About: 
+Meta Author: `Imran`
+//meta-->
+```
+
+---
+
+## Minimum for Excerpt
+
+```
+<!--//meta
+Description: 
+Excerpt: 
 Meta Author: `Imran`
 //meta-->
 ```
