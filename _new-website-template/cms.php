@@ -4,5 +4,5 @@ variables([
 ]);
 
 function site_before_render() {
-	autosetPageMenu();
+	autosetPageMenu([VARDontOverwriteLogo => true]);
 }

@@ -1,0 +1,9 @@
+|is-table
+||cloneAt: amadeusweb/
+||renderWith: repos.php
+||Description: Seeding an Internet of Missions
+||Primary Keyword: DAWN
+||Keywords: Internet of Missions, Dynamic AmadeusWeb Network
+#at	from
+www	https://github.com/amadeusweb-in/www.git
+www/with-ai	https://github.com/amadeusweb-in/with-ai.git
