@@ -1,0 +1,11 @@
+|is-table
+||cloneAt: 
+||renderWith: repos.php
+||Description: Media Domains
+||Primary Keyword: Media
+||Keywords: Media Domains
+#at	from
+
+media/india	https://github.com/dawn-media/india.git
+
+media/www	https://github.com/amadeusweb-sites/media.git
