@@ -1,10 +1,12 @@
 <?php
 contentBox(nodeValue(), cssUX::container . ' mt-3');
-echo '<form method="get" action="./check/" target="spring_check">' . NEWLINE;
+echo '<form method="get" action="./check/" target="spring_health" onsubmit="const action = $(event.submitter).data(\'action\'); if (action) this.action = action; return true;">' . NEWLINE;
 $all = tagUX::checkbox('', '', true, ['onchange' => "$('.check-domain').prop('checked', $(this).prop('checked'));"]);
 h2($all . getLink('All Domains', './'));
 
-echo '<input type="submit" value="Check Health of Selected" />' . NEWLINE;
+echo '<input type="submit" value="Check Health" />' . NEWLINE;
+echo '<input type="submit" value="List Domains" data-action="./domains/" />' . NEWLINE;
+
 
 bootstrapAndUX::colouredDiv('These domains are cached from www/whois/network/sites.tsv and rendered using datatables...', bootstrapAndUX::warning, nodeValue());
 
