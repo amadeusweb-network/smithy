@@ -1,11 +1,12 @@
 <?php
 
-$domains = isset($_GET['domain']) ? $_GET['domain'] : false;
+$filter = (new healthFilters())->showInput();
+
 $items = [];
 
 foreach (domain::$all as $id => $item) {
 	$item = domain::cast($item);
-	if ($domains && !in_array($id, $domains)) continue;
+	if ($filter->skipDomain($id)) continue;
 
 	$site = site::getInfo($item->folder . 'www', $item);
 	if (!$site)
@@ -14,13 +15,14 @@ foreach (domain::$all as $id => $item) {
 		$items[] = appendSite($site, $item);
 
 	foreach ($item->subFolders as $fol) {
+		if ($filter->skipFolder($fol)) continue;
 		foreach ($item->getSites($fol) as $site)
 			$items[] = appendSite($site, $item, $fol);
 	}
 }
 
 features::ensureTables();
-tableBuilder::factory(getPageParameterAt(), $items, ['classes' => 'table-wants-filter']);
+tableBuilder::factory(getPageParameterAt(), $items, ['classes' => VARTableWantsFilter]);
 
 function appendSite(site $site, domain $domain, $folder = '') {
 	$array = (array)$site;

@@ -4,7 +4,7 @@ echo '<form method="get" action="./check/" target="spring_health" onsubmit="cons
 $all = tagUX::checkbox('', '', true, ['onchange' => "$('.check-domain').prop('checked', $(this).prop('checked'));"]);
 h2($all . getLink('All Domains', './'));
 
-echo '<input type="submit" value="Check Health" />' . NEWLINE;
+echo '<input type="submit" value="Check Health" data-action="./check/" />' . NEWLINE;
 echo '<input type="submit" value="List Domains" data-action="./domains/" />' . NEWLINE;
 
 
@@ -17,7 +17,7 @@ function folderLink($folder, $root = false) {
 	$qs = '/?domain=' . $domain . '&folder=' . $folder;
 	$checkable = !$root && $folder != 'all';
 	$cb = tagUX::checkbox('folder[]', $domain . '--' . $folder, $checkable, $checkable ? ['class' => 'check-folder'] : ['disabled' => 'disabled']);
-	return $cb . ($root ? '' : ' &mdash; ') . getLink('<u>' . $name . '</u>', pageUrl('health' . $qs), get_color(getQueryParameter('folder') == $folder))
+	return $cb . ($root ? '' : ' &mdash; ') . getLink('<u>' . $name . '</u>', pageUrl('health/' . $qs), get_color(getQueryParameter('folder') == $folder))
 		;
 }
 
@@ -65,7 +65,7 @@ foreach (domain::$all as $id => $item) {
 	echo replaceItems($line, [
 		'nl' => BRNL,
 		'checkbox' => tagUX::checkbox('domain[]', $id, !$domainId, ['class' => 'check-domain']),
-		'name' => getLink($item->heading, pageUrl('health?domain=' . $id), get_color($domainId == $id)),
+		'name' => getLink($item->heading, pageUrl('health/?domain=' . $id), get_color($domainId == $id)),
 		'sites' => implode(BRNL, array_map(function ($site) { 
 				return ' &mdash; ' . getLink('<u>' . $site . '</u>', replaceNetworkUrls('%urlOf-spring%health/?site=' . $site), get_color(getQueryParameter('site') == $site))
 					. ' &mdash;&gt; visit: ' . getSiteLink($site, variable('thisDomain'));
